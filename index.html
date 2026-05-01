@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SensiMind | AI Sentiment Intelligence</title>
+    <meta name="description" content="Advanced AI sentiment analysis for your customer reviews. Extract insights instantly.">
+    <link rel="stylesheet" href="static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+        <p style="margin-top: 1rem;">Analyzing Intel...</p>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>SensiMind</h1>
+            <p class="subtitle">Decode the emotional pulse of your customers</p>
+        </header>
+
+        <main class="app-grid">
+            <!-- Left Side: Inputs -->
+            <section class="glass-card input-section">
+                <h2>Analyze Reviews</h2>
+                
+                <textarea id="reviewInput" placeholder="Paste a review here to analyze manually..."></textarea>
+                
+                <button id="analyzeBtn" class="btn-primary">
+                    <span>Analyze Single Review</span>
+                </button>
+
+                <div class="upload-zone" id="dropZone">
+                    <div style="font-size: 2rem;">📁</div>
+                    <p><strong>Upload Datasets</strong></p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Supports .txt, .csv, .json</p>
+                    <input type="file" id="fileInput" hidden accept=".txt,.csv,.json">
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                    <button id="demoBtn" class="btn-primary" style="background: transparent; border: 1px solid var(--primary); color: var(--primary);">
+                        Load Demo Data
+                    </button>
+                </div>
+            </section>
+
+            <!-- Right Side: Dashboard -->
+            <section class="glass-card dashboard-section">
+                <div class="dashboard-grid">
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <span class="stat-label">Total Analyzed</span>
+                            <span class="stat-value" id="totalCount">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Positive</span>
+                            <span class="stat-value stat-positive" id="posCount">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Negative</span>
+                            <span class="stat-value stat-negative" id="negCount">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Neutral</span>
+                            <span class="stat-value stat-neutral" id="neuCount">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Mixed</span>
+                            <span class="stat-value stat-mixed" id="mixCount">0</span>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="sentimentChart"></canvas>
+                        <div id="chartDataOverlay" style="position: absolute; font-size: 0.8rem; color: var(--text-muted); pointer-events: none;"></div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+                    <button id="clearBtn" style="background: transparent; border: none; color: var(--negative); cursor: pointer; font-size: 0.8rem; text-decoration: underline;">
+                        Clear History
+                    </button>
+                </div>
+
+                <div class="results-list" id="resultsList">
+                    <div style="text-align: center; color: var(--text-muted); margin-top: 2rem;">
+                        Waiting for analysis...
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>
